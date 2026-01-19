@@ -20,7 +20,6 @@ export async function signInWithCredentials(
 
     return {success: true, message: "User signed in successfully"}
   } catch (error) {
-    console.log(error);
     if(isRedirectError(error)){
         throw error;
     }
