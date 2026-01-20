@@ -7,13 +7,13 @@
 generator client {
   provider = "prisma-client"
   output   = "../src/generated/prisma"
-  previewFeatures = ["driverAdapters"]
 }
 
-datasource db {   
+datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
 }
+
+
 
 
 model Product {
