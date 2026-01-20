@@ -32,9 +32,5 @@ export async function signInWithCredentials(
 
 export async function signOutUser() {
     await signOut();
-
-    return {success: true, message: "User signed out successfully"}
-
-    
 }
 
