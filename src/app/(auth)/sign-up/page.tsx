@@ -50,4 +50,4 @@ const SignUpPage = async (props: {
         </div>
     )
 }
-export default SignUpPage;
+export default SignUpPage
