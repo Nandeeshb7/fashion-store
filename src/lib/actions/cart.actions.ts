@@ -33,7 +33,7 @@ export async function addItemToCart(
 ): Promise<{ success: boolean; message: string }> {
   try {
     // check for cart cookie
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     let sessionCartId = cookieStore.get("sessionCartId")?.value;
     if (!sessionCartId) {
       sessionCartId = crypto.randomUUID();
@@ -153,7 +153,7 @@ export async function addItemToCart(
 }
 
 export async function getMyCart() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   let sessionCartId = cookieStore.get("sessionCartId")?.value;
   if (!sessionCartId) {
     sessionCartId = crypto.randomUUID();
@@ -194,7 +194,7 @@ export async function getMyCart() {
 export async function removeItemFromCart(productId: string) {
   try {
     // check for cart cookie
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     let sessionCartId = cookieStore.get("sessionCartId")?.value;
     if (!sessionCartId) {
       sessionCartId = crypto.randomUUID();
