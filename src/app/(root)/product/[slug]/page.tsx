@@ -16,7 +16,13 @@ const ProductDetailsPage = async (props: {
 
   if (!product) notFound();
 
-  const cart = await getMyCart();
+  let cart;
+  try {
+    cart = await getMyCart();
+  } catch (error) {
+    console.error("Error fetching cart:", error);
+    cart = undefined;
+  }
 
   return (
     <>
