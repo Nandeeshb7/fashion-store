@@ -54,7 +54,7 @@ export async function addItemToCart(
     const userId = session?.user?.id ? session?.user?.id : undefined;
 
     // Get cart
-    const cart = await getMyCard();
+    const cart = await getMyCart();
 
     //parse and validate item
     const item = cartItemSchema.parse(data);
@@ -153,7 +153,7 @@ export async function addItemToCart(
   }
 }
 
-export async function getMyCard() {
+export async function getMyCart() {
   const cookieStore = cookies();
   let sessionCartId = cookieStore.get("sessionCartId")?.value;
   if (!sessionCartId) {
@@ -220,7 +220,7 @@ export async function removeItemFromCart(productId: string) {
 
     // Get User Cart
 
-    const cart = await getMyCard();
+    const cart = await getMyCart();
     if (!cart) throw new Error("Cart not found");
 
     // Check for Item
