@@ -1,6 +1,6 @@
 "use server";
 
-import { formatError, success, ZodError } from "zod";
+import { ZodError } from "zod";
 import { CartItem } from "../../../types";
 import { cookies } from "next/headers";
 import { auth } from "../../../auth";
@@ -9,7 +9,6 @@ import { convertToPlainObject, roundTwo } from "../utils";
 import { cartItemSchema, insertCartSchema } from "../validators";
 import { revalidatePath } from "next/cache";
 import { Prisma } from "@/generated/prisma/client";
-import { Trykker } from "next/font/google";
 
 // Calculate cart prices.
 
@@ -142,7 +141,7 @@ export async function addItemToCart(
   } catch (error) {
     const message =
       error instanceof ZodError
-        ? JSON.stringify(formatError(error))
+        ? error.issues.map((e) => e.message).join(", ")
         : error instanceof Error
           ? error.message
           : "Unknown error";
@@ -261,7 +260,7 @@ export async function removeItemFromCart(productId: string) {
   } catch (error) {
     const message =
       error instanceof ZodError
-        ? JSON.stringify(formatError(error))
+        ? error.issues.map((e) => e.message).join(", ")
         : error instanceof Error
           ? error.message
           : "Unknown error";

@@ -1,11 +1,7 @@
-import { error } from "console";
 import NextAuth from "next-auth";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { prisma } from "./db/prisma";
-
 import CredentialsProvider from "next-auth/providers/credentials";
-import { email } from "zod";
-import { AwardIcon } from "lucide-react";
 import { compareSync } from "bcrypt-ts-edge";
 import type { NextAuthConfig } from "next-auth";
 import { cookies } from "next/headers";
