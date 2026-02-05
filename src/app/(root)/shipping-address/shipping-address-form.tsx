@@ -50,11 +50,10 @@ const ShippingAddressForm = ({
         });
         return;
       }
-
       router.push("/payment-method");
     });
   };
-  
+
   return (
     <>
       <div className="max-w-md mx-auto space-y-4">
